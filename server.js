@@ -10,14 +10,18 @@ const posts = require('./routes/api/posts');
 const app = express();
 
 // BodyParser middleware
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Config db
 const db = require('./config/keys').mongoURI;
 
 // Connect to mongo db
-mongoose.connect(db, {useNewUrlParser: true}) // Added new mongo url parser
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  ) // Added new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
